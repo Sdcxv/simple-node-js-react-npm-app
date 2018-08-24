@@ -1,10 +1,10 @@
 pipeline {
     agent {
-        docker {
             label 'MacNode'
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
+       // docker {
+         //   image 'node:6-alpine'
+           // args '-p 3000:3000'
+        //}
     }
     environment {
         Path = '/Users/admin/.nvm/versions/node/v8.11.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/admin/Library/Android/sdk/tools:/Users/admin/Library/Android/sdk/platform-tools'
@@ -12,6 +12,11 @@ pipeline {
         AOEU= sh (returnStdout: true, script: 'echo aoeu').trim()
     }
     stages {
+        stage('Build') {
+            steps {
+                sh 'printenv'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'
