@@ -12,9 +12,9 @@ pipeline {
         AOEU= sh (returnStdout: true, script: 'echo aoeu').trim()
     }
     stages {
-        stage('Build') {
+        stage('env') {
             steps {
-                sh 'printenv'
+                sh 'env'
             }
         }
         stage('Build') {
